@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# transcode zoom meeting from a terminal
+# emphemeral X server provides hook for progress bar
+
+# parameters for slurm
+#SBATCH -J zoomerang
+#SBATCH -n 1
+#SBATCH --cpus-per-task 2
+#SBATCH --mem 800
+#SBATCH --partition short
+
+module reset
+module load rc/zoom/3.5.37
+
+../xdotool/t/ephemeral-x.sh zoom --transcoding --path="`pwd`"
